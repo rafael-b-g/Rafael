@@ -1,0 +1,298 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        h1 {
+            margin: 0 0 16px 0;
+        }
+
+        h2 {
+            margin: 24px 0 8px 0;
+        }
+
+        h3 {
+            margin: 16px 0 4px 0;
+            color: var(--anti-theme2);
+        }
+
+        h4 {
+            margin: 8px 0 0 0;
+            color: var(--anti-theme3);
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            line-height: 150%;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin: 0 0 16px 16px;
+            line-height: 150%;
+            font-weight: 400;
+            font-size: 16px;
+            color: var(--anti-theme2);
+        }
+
+        code {
+            display: inline-block;
+            background-color: var(--theme2);
+            border-width: 0.5px;
+            border-color: var(--theme3);
+            border-style: solid;
+            border-radius: 4px;
+            padding: 0 4px;
+            margin: 1px 0;
+            color: var(--anti-theme2);
+            font-family: monospace;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .code-block {
+            margin: 0 0 12px 0;
+            border-radius: 6px;
+            padding: 8px 12px 8px 12px;
+            width: 100%;
+            /* background-color: transparent; */
+            /* opacity: 80%; */
+            /* border-width: 1px; */
+        }
+
+        blockquote {
+            padding: 0 0 0 16px;
+            line-height: 150%;
+            font-weight: 400;
+            font-size: 16px;
+            display: inline-block;
+            border-style: solid;
+            border-width: 0 0 0 3px;
+            border-radius: 3px;
+            border-color: var(--theme5);
+        }
+
+        blockquote p,
+        blockquote code {
+            color: var(--anti-theme3);
+        }
+
+        hr {
+            margin: 16px 0;
+            color: var(--theme1);
+            border-color: var(--theme1);
+            border-width: 1px;
+        }
+    </style>
+    <script src="index.js">
+    </script>
+    <title>Rafael Barbosa</title>
+</head>
+
+<body>
+    <div id="header">
+        <a href="index.html" style="text-decoration: none;">
+            <h2>Rafael Barbosa</h2>
+        </a>
+        <span class="button" onclick="switchTheme()">
+            <i class="fa fa-adjust"></i>
+
+    </div>
+
+    <div id="body" style="padding-top: 88px;">
+        <h1>Electrum</h1>
+        <p>Learning about cryptocurrencies and related technologies, I came across the huge energy waste problem present
+            in Bitcoin and other coins that use Proof-of-Work (<em>PoW</em>) as their consensus algorithm.</p>
+        <p>For those who are not familiar with the term <strong>consensus algorithm</strong>, it is an essential part of
+            any blockchain (or any decentralized system), that guarantees the agreement of the participants about what
+            is valid and what is not. In other words, it's what <strong>“determines the truth”</strong> in these
+            systems.
+        </p>
+        <p>Trying to solve this energy waste problem, I <strong>ideated a consensus algorithm and a
+                cryptocurrency</strong> to use it.</p>
+        <p>Nothing has been implemented so far, no code was written. I am writing this article intending to receive help
+            or suggestions. There are still a few points to be solved or defined. I'll talk more about them later on.
+        </p>
+        <p>The name of the cryptocurrency will be <strong>Electrum</strong>, which is a metallic alloy of gold and
+            silver, used as one of the first coins in history. And the consensus algorithm will be called:</p>
+        <h2>Proof-of-Something</h2>
+        <p>Proof-of-Something is the name I chose due to my lack of creativity.</p>
+        <p>The algorithm is based on the product between the <strong>volume of coins being transferred</strong> and the
+            <strong>”age” of these coins</strong>. Let me explain.
+        </p>
+        <p>On a blockchain, sometimes two (or more) participants disagree about the current state of the network. For
+            example, participant <strong>A</strong> thinks that the most recent block on the network contains 10
+            transactions. But participant <strong>B</strong> thinks that this same block contains 9 transactions.</p>
+        <p>To decide who is “right”, this consensus algorithm will calculate a <strong>score</strong> for
+            <strong>A</strong>'s version and <strong>B</strong>'s version of the blockchain. These scores are calculated
+            by multiplying the <strong>number of coins</strong> contained in each input of every transaction by the
+            <strong>age of each coin</strong>.
+        </p>
+        <p>In case you are not familiar with the concept of <em>inputs and outputs</em> in a cryptocurrency, I suggest
+            you read <a href="https://www.bitcoin.com/get-started/how-bitcoin-transactions-work/#2/">this</a> (just the
+            “Transaction inputs and outputs” part) before proceeding.</p>
+        <h3>Score calculation</h3>
+        <p>Here I explain in detail how the
+            algorithm works, step by step.</p>
+        <p>Steps to calculate the score of a transaction (<code>Tx</code>):</p>
+        <h4>Step 1:</h4>
+        <p>Get the first <em>input</em> of <code>Tx</code>.
+            <br>(Let's call it <code>In</code>)
+        </p>
+        <hr>
+        <h4>Step 2:</h4>
+        <p>Get the <em>output</em> that is consumed/referenced by <code>In</code>.
+            <br>(Let's call it <code>Out</code>)
+        </p>
+        <hr>
+        <h4>Step 3:</h4>
+        <p>Calculate <code>In</code>'s score, using the formula:</p>
+        <code class="code-block">P = X * Y</code>
+        <ul>
+            <li><code>P</code> is the score of <code>In</code>.</li>
+            <li><code>X</code> is the number of coins contained in <code>Out</code>.</li>
+            <li><code>Y</code> is <code>Out</code>'s age.</li>
+        </ul>
+        <p><code>Y</code> is calculated using the formula:</p>
+        <code class="code-block">Y = B1 - B0</code>
+        <ul>
+            <li><code>B1</code> is the index of the block that contains <code>Tx</code> (i.e. it's when <code>Out</code>
+                was consumed. <code>Out</code>'s “death”).</li>
+            <li><code>B0</code> is the index of the block in which <code>Out</code> was created (<code>Out</code>'s
+                “birth”).</li>
+        </ul>
+        <hr>
+        <h4>Step 4:</h4>
+        <p>Repeat, starting at <strong>step 1</strong>, calculating the score of the next inputs of <code>Tx</code>.
+            After calculating the score of every input of <code>Tx</code>, sum all the results (the <code>P</code>'s)
+            to get <code>Tx</code>'s score.</p>
+        <hr>
+        <h3>Score calculation example</h3>
+        <p>In this example, we calculate the score of a hypothetical transaction (<code>Tx</code>).</p>
+        <p>Someone made a transaction, <code>Tx</code>, with the following characteristics:</p>
+        <ul>
+            <li><code>Tx</code> is in block <code>100</code></li>
+            <li><code>Tx</code> contains 2 inputs:<ul>
+                    <li>The first input (<code>In_1</code>) consumes an output (<code>Out_1</code>) created in block
+                        <code>90</code> and contains 5 Electrums.
+                    </li>
+                    <li>The second input (<code>In_2</code>) consumes an output (<code>Out_2</code>) created in block
+                        <code>55</code> and contains 3 Electrums.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p>As we already have the information of all the inputs and outputs, <strong>steps 1 and 2</strong> are
+            concluded. Now, in <strong>step 3</strong>, we apply the formula:</p>
+        <blockquote>
+            <p><code>P = X * Y</code></p>
+            <p><code>Y = B1 - B0</code></p>
+            <p><code>P</code> is the score of <code>In</code>.<br><code>X</code> is the number of Electrums contained in
+                <code>Out</code>.<br><code>Y</code> is <code>Out</code>'s age.<br><code>B1</code> is the index of the
+                block that contains <code>Tx</code> (i.e. it's when <code>Out</code> was consumed. <code>Out</code>'s
+                “death”).<br><code>B0</code> is the index of the block in which <code>Out</code> was created
+                (<code>Out</code>'s “birth”).
+            </p>
+        </blockquote>
+        <p>Inserting <code>Y</code> in the first formula, we have:</p>
+        <code class="code-block">P = X * (B1 - B0)</code>
+        <p>It's important to notice that the formula is applied to each input (<code>In_1</code> and <code>In_2</code>)
+            separately. Thus, we'll first calculate <code>In_1</code>'s score. Inserting the values of each variable of
+            <code>In_1</code>, we have:
+        </p>
+        <code class="code-block">P = 5 * (100 - 90)
+            <br>P = 5 * 10
+            <br>P = 50
+        </code>
+        <p>Therefore, <code>In_1</code>'s score is <strong>50 points</strong>. Step 3 concluded we proceed to step 4.
+        </p>
+        <p>In <strong>step 4</strong>, we'll only repeat what we did, but this time with <code>In_2</code>.</p>
+        <code class="code-block">P = X * (B1 - B0)</code>
+        <p>Inserting the values…</p>
+        <code class="code-block">P = 3 * (100 - 55)
+            <br>P = 3 * 45
+            <br>P = 135
+        </code>
+        <p>Therefore, <code>In_2</code>'s score is <strong>135 points</strong>.</p>
+        <p>Finally, to calculate <code>Tx</code>'s score, we just have to sum up all the calculated scores. Thus,
+            <code>Tx</code>'s score is <strong>185 points</strong> (50 + 135).
+        </p>
+        <h2>The cryptocurrency</h2>
+        <h3>Security</h3>
+        <p><em>Proof-of-Something</em> will eliminate the necessity/possibility of mining, but this won't make Electrum
+            less secure.</p>
+        <p>On the Electrum network, the security against <strong>double spends (51% attacks)</strong> will be based on
+            the flow of Electrums between different users. This way, <strong>as the number of user grow, the network
+                becomes more secure</strong>.</p>
+        <p>To successfully perform a 51% attack, an attacker would have to create a transaction (or transactions) with a
+            score bigger than the sum of the scores of every other transaction being overwritten. Therefore, the more
+            normal/honest transactions, the more difficult it is for someone to attack the network.</p>
+        <h3>Fees</h3>
+        <p>To <strong>discourage unnecessary transactions</strong> (<strong>or even attacks</strong>, as described
+            above), it is reasonable to have a fee over transactions. This way, in case someone tries to perform a 51%
+            attack, this person would necessarily lose the money spent with the fee, in case the attack is successful.
+        </p>
+        <p>The fee will be 0.2% over the transferred value.</p>
+        <h3>Speed</h3>
+        <p>In most cryptocurrencies, the speed at which blocks are created depends on the “luck” of the miner and their
+            computing power (called <em>hashing power</em>).</p>
+        <p>However, in Electrum, the <strong>speed at which blocks are created</strong> will always be
+            <strong>constant</strong>, as there will be no mining. The interval between each block will be <strong>240
+                seconds</strong> (four minutes). This means that every 4 minutes a block will be created, containing the
+            transactions made in this time interval.
+        </p>
+        <h3>Coin distribution</h3>
+        <p>The coins need to be distributed among the users in a fair way. For example, in Bitcoin, coins are
+            distributed as rewards to the miners, which is fair and logical.</p>
+        <p>However, in Electrum, mining won't exist. Because of this, it's necessary to create a mechanism to distribute
+            the coins. I have an “idea” but it is incomplete and doesn't solve the problem: coins could be distributed
+            through staking. Staking is the payment of interest to users that hold their coins for a lot of time. The
+            <strong>problem</strong> is that this system <strong>only works if the users already have coins
+                (Electrums)</strong>.
+        </p>
+        <p>This is probably the most important part of the article. I don't have a solution to the problem presented, so
+            I came to ask for help, suggestions, and ideas. I'll talk more about this in the section
+            <em>Contribute</em>. So, <strong>please, I want/need better ideas</strong>.
+        </p>
+        <h3>Block creation</h3>
+        <p>Normally, in a blockchain, every block points to its immediate predecessor, always maintaining linearity
+            (i.e. there must not be two blocks pointing to the same predecessor). This way, starting from any block, it
+            is possible to find all of the previous blocks, as they form a <em>block chain</em>.</p>
+        <p>However, in Electrum, things will be a little different. There are two main differences:</p>
+        <p><strong>Blocks won't point to previous blocks. Transactions will.</strong> All <strong>transactions</strong>
+            will have to point to the <strong>block</strong> immediately anterior to them. This will serve to guarantee
+            blockchain immutability. If it wasn't this way, anyone could modify the entire blockchain, with nothing to
+            stop them. Transactions point to blocks; blocks contain other transactions; if any transaction is altered or
+            removed from the blockchain, all the following transactions will turn invalid. Therefore,
+            <em>Proof-of-Something</em> will always choose the version of the blockchain with the highest score.
+        </p>
+        <p><strong>Blocks won't be mined. They will be created simultaneously by every node.</strong> As said in the
+            section <em>Speed</em>, blocks will come out in a constant flow. Thus, it wouldn't be viable to have one
+            node creating and propagating a block through the network like it is in other blockchains. If it was like
+            that, there should be some way to choose this miner, which would only complicate the system. Instead, in
+            Electrum, <strong>nodes will create blocks locally</strong>, grouping the most recent transactions received
+            when it's time to create a block (i.e. every 4 minutes). To assure the consensus, after creating a block,
+            nodes will check if <strong>they all have the same transactions</strong> and, if not, correct it.</p>
+        <p>If something is unclear, don't hesitate to ask or comment, I'll try to answer everything.</p>
+        <h2>Contribute</h2>
+        <p>Like I said before, the main goal of this article is to find people interested in helping, either with
+            suggestions or even building the system with me.</p>
+        <p>The two main points on which I need help are:</p>
+        <ul>
+            <li>How to distribute coins</li>
+            <li>What technologies to use (languages, frameworks, libraries…)</li>
+        </ul>
+        <p>Do you have any idea, doubt, or suggestion? <strong><a href="index.html#lets-talk">Let's
+                    talk!</a></strong></p>
+    </div>
+    <a href="index.html" style="text-decoration: none;">
+        <p id="footer">Rafael Barbosa</p>
+    </a>
+</body>
+
+</html>

@@ -1,0 +1,309 @@
+@media (prefers-color-scheme: light) {
+    :root {
+        --anti-theme1: #191919;
+        --anti-theme2: #3B3B3B;
+        --anti-theme3: #5E5E5E;
+        --anti-theme4: #808080;
+        --anti-theme5: #A3A3A3;
+        --highlight: #009C75;
+        --selection: #00E3AA;
+
+        --theme1-70: rgba(255, 255, 255, 0.7);
+        --theme1: #ffffff;
+        --theme2: #DDDDDD;
+        --theme3: #BABABA;
+        --theme4: #979797;
+        --theme5: #757575;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --anti-theme1: #ffffff;
+        --anti-theme2: #DDDDDD;
+        --anti-theme3: #BABABA;
+        --anti-theme4: #979797;
+        --anti-theme5: #757575;
+        --highlight: #00E3AA;
+        --selection: #009C75;
+
+        --theme1-70: rgba(25, 25, 25, 0.7);
+        --theme1: #191919;
+        --theme2: #3B3B3B;
+        --theme3: #5E5E5E;
+        --theme4: #808080;
+        --theme5: #A3A3A3;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    line-height: 130%;
+    transition-duration: 0.35s;
+    transition-property: all;
+    transition-timing-function: ease;
+    -webkit-transition-duration: 0.35s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: ease;
+}
+
+#body {
+    margin: 0 4% 0 4%;
+}
+
+@media screen and (min-width : 620px) {
+    #body {
+        margin: 0 10% 0 10%;
+    }
+}
+
+@media screen and (min-width : 800px) {
+    #body {
+        margin: 0 13% 0 13%;
+    }
+}
+
+@media screen and (min-width : 1000px) {
+    #body {
+        margin: 0 15% 0 15%;
+    }
+}
+
+@media screen and (min-width : 1150px) {
+    #body {
+        margin: 0 18% 0 18%;
+    }
+}
+
+@media screen and (min-width : 1300px) {
+    #body {
+        margin: 0 auto;
+        max-width: 832px;
+    }
+}
+
+body {
+    background-color: var(--theme1);
+}
+
+#header {
+    display: flex;
+    height: 56px;
+    width: 100%;
+    padding: 0 16px;
+    margin: 0;
+    box-sizing: border-box;
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--theme2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: var(--theme1-70);
+    z-index: 1;
+}
+
+#header h2 {
+    margin: 0;
+    color: var(--anti-theme4);
+}
+
+.button {
+    height: 29px;
+    font-size: 16px;
+    padding: 4px 8px;
+    margin: 0 0 0 8px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: inline-block;
+    color: var(--anti-theme3);
+    vertical-align: middle;
+    background-color: var(--theme2);
+    cursor: pointer;
+    font-size: 21;
+}
+
+.button:hover {
+    opacity: 0.75;
+}
+
+#welcome {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* justify-items: stretch; */
+    vertical-align: text-top;
+}
+
+#welcome img {
+    height: 75px;
+    border-radius: 12px;
+    display: inline-block;
+    box-sizing: border-box;
+    z-index: 0;
+}
+
+#welcome img:hover {
+    border: 1px solid var(--anti-theme1);
+    box-shadow: 0px 2px 5px rgba(28, 28, 28, 0.3);
+    border-radius: 4px;
+    transform: scale(3) translate(-25px, 25px);
+}
+
+#welcome div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.flex {
+    margin: 16px 0 0 0;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 16px 16px;
+}
+
+.flex div {
+    width: calc(50% - 8px);
+    padding: 16px;
+    border-color: var(--anti-theme5);
+    border-width: 1.5px;
+    border-radius: 8px;
+    border-style: solid;
+    box-sizing: border-box;
+    display: flexbox;
+    background-color: var(--theme1);
+}
+
+/* .flex div:hover {
+    border: 1px solid var(--anti-theme1);
+    box-shadow: 0px 2px 5px rgba(28, 28, 28, 0.3);
+    backdrop-filter: blur(10px);
+    transform: scale(1.1);
+} */
+
+@media screen and (min-width : 800px) {
+    .flex div {
+        width: calc(33% - 10.6px);
+    }
+}
+
+@media screen and (min-width : 1150px) {
+    .flex div {
+        width: calc(25% - 12px);
+    }
+}
+
+.contact-button {
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid var(--anti-theme5);
+    box-shadow: 0px 2px 5px rgba(28, 28, 28, 0.1);
+    padding: 8px 8px 8px 0;
+    display: flex;
+    margin: 8px 0 0 0;
+    box-sizing: border-box;
+    width: fit-content;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.contact-button:hover {
+    opacity: 0.75;
+}
+
+.contact-button i {
+    height: 35px;
+    width: 37px;
+    color: var(--theme1);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 8px;
+    background-color: var(--anti-theme2);
+    margin: 0 8px 0 0;
+    padding: 7px 0;
+    font-size: 21px;
+    box-sizing: border-box;
+    text-align: center;
+
+}
+
+#footer {
+    margin: 80px 0 0 0;
+    font-size: 15vw;
+    line-height: 11.3vw;
+    font-weight: 600;
+    -webkit-text-stroke: 2px var(--anti-theme3);
+    paint-order: stroke fill;
+    color: var(--theme1);
+}
+
+a {
+    color: var(--highlight);
+    text-decoration: underline;
+    text-decoration-color: var(--highlight);
+    cursor: pointer;
+}
+
+a:hover {
+    opacity: 0.75;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 100%;
+    color: var(--anti-theme1);
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 100%;
+    margin: 32px 0 2px 0;
+    color: var(--anti-theme2);
+}
+
+h3 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    color: var(--anti-theme3);
+}
+
+.primary,
+p {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--anti-theme2);
+}
+
+.secondary {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--anti-theme3);
+}
+
+.terciary {
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--anti-theme5);
+}
+
+.semibold {
+    font-weight: 600;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+::selection {
+    background: var(--selection);
+}
