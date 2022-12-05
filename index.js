@@ -35,7 +35,7 @@ function switchTheme() {
 }
 
 function calculateLastUpdate() {
-    let lastUpdate = new Date("2022-10-25").getTime();
+    let lastUpdate = new Date("2022-12-05").getTime();
     let now = Date.now();
     let days = Math.floor((now - lastUpdate) / 86400000);
     document.getElementById("last-updated").innerHTML = "Last updated " + days + " day" + (days == 1 ? "" : "s") + " ago.";
